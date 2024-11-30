@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1>ADD CATEGORIES</h1>-->
+   <form method="post" action="{% url 'update_category' cat_id=cat.id %}" enctype="multipart/form-data">
+       {% csrf_token %}
+       <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Edit Categories</h6>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="category" class="form-control" id="floatingInput" placeholder="categoryname" value="{{cat.Category_Name}}">
+                                <label for="floatingInput">Enter category Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <label for="formFileMultiple" class="form-label">Category Image</label><br><br>
+                                <img src="{{cat.Category_Image.url}}" width="70px" height="100px">
+                                <input class="form-control bg-dark" type="file" name="image" id="FormFileMultiple" multiple="">
+
+                            </div>
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
+<!--                                    <option selected="">Open this select menu</option>-->
+<!--                                    <option value="1">One</option>-->
+<!--                                    <option value="2">Two</option>-->
+<!--                                    <option value="3">Three</option>-->
+<!--                                </select>-->
+<!--                                <label for="floatingSelect">Works with selects</label>-->
+<!--                            </div>-->
+                            <div class="form-floating">
+                                <textarea class="form-control" name="description" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;">
+                                    {{cat.Description}}
+                                </textarea>
+                                <label for="floatingTextarea">Description</label>
+                            </div><br>
+
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </div>
+                        </div>
+                    </div>
+
+   </form>
+
+</body>
+</html>
+{% endblock %}
